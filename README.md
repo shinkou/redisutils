@@ -76,5 +76,5 @@ where _TAG_ can be simply *shinkou/redisutils*.
 Issue the following command to run:
 
 ```
-$ docker run -v "/dir/to/mount:/data" --rm -i TAG COMMAND
+$ docker run -v "/dir/to/mount:/data" --rm -t TAG COMMAND
 ```
