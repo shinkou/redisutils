@@ -1,0 +1,27 @@
+#!/usr/bin/env python
+# vim: ff=unix fileencoding=utf-8 lcs=tab\:>. list noet sc sw=4 ts=4 tw=0
+from redisutils import redis_argparser, redis_delete
+
+def get_args():
+	'''
+	Get command line options and arguments
+	'''
+	parser = redis_argparser(description='Redis Keys Remover')
+	parser.add_argument(
+		'inputs'
+		, metavar='INPUT'
+		, type=str
+		, nargs='+'
+		, help='input (RegExp / CSV filepath)'
+	)
+	parser.add_argument(
+		'--csv'
+		, metavar='BOOL'
+		, type=bool
+		, help='whether to take inputs as CSV filepaths, RegExps otherwise'
+	)
+	return parser.parse_args()
+
+
+if '__main__' == __name__:
+	redis_delete(vars(get_args()))

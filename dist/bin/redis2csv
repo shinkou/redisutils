@@ -1,0 +1,42 @@
+#!/usr/bin/env python
+# vim: ff=unix fileencoding=utf-8 lcs=tab\:>. list noet sc sw=4 ts=4 tw=0
+from redisutils import redis_argparser, redis_dump
+
+
+def get_args():
+	'''
+	Get command line options and arguments
+	'''
+	parser = redis_argparser(description='Redis To CSV Extractor')
+	parser.add_argument(
+		'pattern'
+		, metavar='REGEXP'
+		, type=str
+		, nargs='+'
+		, help='key pattern to dump'
+	)
+	parser.add_argument(
+		'--count'
+		, metavar='COUNT'
+		, type=int
+		, help='Redis key scan count (default: 65536)'
+		, default=65536
+	)
+	parser.add_argument(
+		'--limit'
+		, metavar='LIMIT'
+		, type=int
+		, help='max number of entries to dump'
+		, default=-1
+	)
+	parser.add_argument(
+		'-o', '--output'
+		, metavar='FILEPATH'
+		, type=str
+		, help='filepath of the output CSV (stdout will be used if omitted)'
+	)
+	return parser.parse_args()
+
+
+if '__main__' == __name__:
+	redis_dump(vars(get_args()))
