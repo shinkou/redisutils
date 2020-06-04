@@ -10,17 +10,17 @@ def get_args():
 	parser = redis_argparser(description='CSV To Redis Restorer')
 	parser.add_argument(
 		'inputs'
-		, metavar='FILEPATH'
-		, type=str
 		, nargs='+'
+		, type=str
 		, help='filepath of the input CSV'
+		, metavar='FILEPATH'
 	)
 	parser.add_argument(
 		'--mset-size'
-		, metavar='SIZE'
+		, default=65536
 		, type=int
 		, help='Redis mset size (default: 65536)'
-		, default=65536
+		, metavar='SIZE'
 	)
 	return parser.parse_args()
 

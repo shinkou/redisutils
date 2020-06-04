@@ -57,7 +57,7 @@ $ redisdel -H some.redis.server REGEXP1 [ REGEXP2 [ REGEXP3 ... ] ]
 To remove keys provided in CSVs:
 
 ```
-$ redisdel -H some.redis.server --csv True CSV1 [ CSV2 [ CSV3 ... ] ]
+$ redisdel -H some.redis.server --csv CSV1 [ CSV2 [ CSV3 ... ] ]
 ```
 
 ### Prepare a Docker Image

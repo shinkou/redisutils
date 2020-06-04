@@ -9,16 +9,15 @@ def get_args():
 	parser = redis_argparser(description='Redis Keys Remover')
 	parser.add_argument(
 		'inputs'
-		, metavar='INPUT'
-		, type=str
 		, nargs='+'
+		, type=str
 		, help='input (RegExp / CSV filepath)'
+		, metavar='INPUT'
 	)
 	parser.add_argument(
 		'--csv'
-		, metavar='BOOL'
-		, type=bool
-		, help='whether to take inputs as CSV filepaths, RegExps otherwise'
+		, action='store_true'
+		, help='specify to treat inputs as CSV filepaths, RegExps otherwise'
 	)
 	return parser.parse_args()
 

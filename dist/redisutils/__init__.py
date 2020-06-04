@@ -85,38 +85,37 @@ def redis_argparser(description):
 	parser = argparse.ArgumentParser(description=description)
 	parser.add_argument(
 		'-H', '--host'
-		, metavar='FQDN'
+		, default='localhost'
 		, type=str
 		, help='source host (default: "localhost")'
-		, default='localhost'
+		, metavar='FQDN'
 	)
 	parser.add_argument(
 		'-P', '--port'
-		, metavar='PORT'
+		, default=6379
 		, type=int
 		, help='source port (default: 6379)'
-		, default=6379
+		, metavar='PORT'
 	)
 	parser.add_argument(
 		'-D', '--db'
-		, metavar='DB'
+		, default=0
 		, type=int
 		, help='source database (default: 0)'
-		, default=0
+		, metavar='DB'
 	)
 	parser.add_argument(
 		'--charset'
-		, metavar='CHARSET'
+		, default='utf-8'
 		, type=str
 		, help='decode charset (default: "utf-8")'
-		, default='utf-8'
+		, metavar='CHARSET'
 	)
 	parser.add_argument(
-		'--decode-responses'
-		, metavar='BOOL'
-		, type=bool
-		, help='whether to decode responses (default: True)'
-		, default=True
+		'--no-decode-responses'
+		, action='store_false'
+		, help='specify to disable response decoding'
+		, dest='decode_responses'
 	)
 	return parser
 

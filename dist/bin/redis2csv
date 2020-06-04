@@ -10,30 +10,30 @@ def get_args():
 	parser = redis_argparser(description='Redis To CSV Extractor')
 	parser.add_argument(
 		'pattern'
-		, metavar='REGEXP'
-		, type=str
 		, nargs='+'
+		, type=str
 		, help='key pattern to dump'
+		, metavar='REGEXP'
 	)
 	parser.add_argument(
 		'--count'
-		, metavar='COUNT'
+		, default=65536
 		, type=int
 		, help='Redis key scan count (default: 65536)'
-		, default=65536
+		, metavar='COUNT'
 	)
 	parser.add_argument(
 		'--limit'
-		, metavar='LIMIT'
+		, default=-1
 		, type=int
 		, help='max number of entries to dump'
-		, default=-1
+		, metavar='LIMIT'
 	)
 	parser.add_argument(
 		'-o', '--output'
-		, metavar='FILEPATH'
 		, type=str
 		, help='filepath of the output CSV (stdout will be used if omitted)'
+		, metavar='FILEPATH'
 	)
 	return parser.parse_args()
 
