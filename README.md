@@ -60,21 +60,21 @@ To remove keys provided in CSVs:
 $ redisdel -H some.redis.server --csv CSV1 [ CSV2 [ CSV3 ... ] ]
 ```
 
-### Prepare a Docker Image
-
-You can also prepare a Docker image if you don't want to install on your
-host machine. Simply change to the top directory and run:
-
-```
-$ docker build -t TAG .
-```
-
-where _TAG_ can be simply *shinkou/redisutils*.
-
 ### Run from the Docker Image
 
 Issue the following command to run:
 
 ```
-$ docker run -v "/dir/to/mount:/data" --rm -t TAG COMMAND
+$ docker run -v "/dir/to/mount:/data" --rm -t shinkou/redisutils COMMAND
 ```
+where _COMMAND_ is one of `redis2csv`, `csv2redis`, or `redisdel`.
+
+### Prepare a Docker Image
+
+You can also prepare your own Docker image if you feel adventurous. Simply
+change to the top directory and run:
+
+```
+$ docker build -t TAG .
+```
+where _TAG_ can be simply *shinkou/redisutils*.
