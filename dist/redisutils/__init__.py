@@ -11,7 +11,11 @@ def _connect(attrs):
 	'''
 	Create and return connection to Redis host with given attributes
 	'''
-	cnxinfo = {k: attrs[k] for k in ('host', 'port', 'db', 'charset', 'decode_responses') if k in attrs and attrs[k] is not None}
+	cnxinfo = {
+		k: attrs[k]
+		for k in ('host', 'port', 'db', 'charset', 'decode_responses', 'ssl')
+		if k in attrs and attrs[k] is not None
+	}
 	return redis.Redis(**cnxinfo)
 
 
@@ -116,6 +120,11 @@ def redis_argparser(description):
 		, action='store_false'
 		, help='specify to disable response decoding'
 		, dest='decode_responses'
+	)
+	parser.add_argument(
+		'--ssl'
+		, action='store_true'
+		, help='enable SSL/TLS'
 	)
 	return parser
 
