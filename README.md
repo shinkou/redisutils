@@ -65,7 +65,7 @@ $ redisdel -H some.redis.server --csv CSV1 [ CSV2 [ CSV3 ... ] ]
 Issue the following command to run:
 
 ```
-$ docker run -v "/dir/to/mount:/data" --rm shinkou/redisutils COMMAND
+$ docker run -v "/dir/to/mount:/data" -w /data --rm shinkou/redisutils COMMAND
 ```
 where _COMMAND_ is one of `redis2csv`, `csv2redis`, or `redisdel`.
 
